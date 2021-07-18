@@ -1,0 +1,23 @@
+---
+- name: Check for existing installation
+  stat:
+    path: ~/.SpaceVim
+
+  register: spacevim_installed
+
+- block:
+  - name: Load installer data
+    uri:
+      url: https://spacevim.org/install.sh
+      return_content: yes
+
+    register: spaceviminstall
+
+  - name: Perform installation
+    command:
+      argv:
+        - "bash"
+        - "-c"
+        - "{{ spaceviminstall.content }}"
+
+  when: spacevim_installed.stat.exists == False

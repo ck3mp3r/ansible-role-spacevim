@@ -1,0 +1,4 @@
+---
+- include_tasks: neovim.yaml
+- include_tasks: spacevim.yaml
+

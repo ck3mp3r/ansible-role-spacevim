@@ -1,0 +1,8 @@
+galaxy_info:
+  author: Christian Kemper
+  description: SpaceVim installation
+  license: MIT
+  role_name: spacevim
+  min_ansible_version: 2.1
+  galaxy_tags: []
+dependencies: []

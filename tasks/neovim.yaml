@@ -1,0 +1,53 @@
+---
+- block:
+  - name: Install neovim - (Darwin)
+    homebrew:
+      package:
+        - neovim
+      state: latest
+
+  - name: Tap cask-fonts
+    homebrew_tap:
+      name: homebrew/cask-fonts
+      state: present
+
+  - name: Install nerd fonts
+    homebrew_cask:
+      name: font-hack-nerd-font
+      state: upgraded
+
+  when: ansible_os_family | lower == 'darwin' and with_neovim == true
+
+- name: Install neovim - (Debian)
+  become: yes
+  package:
+    name:
+      - neovim
+    state: latest
+
+  when: ansible_os_family | lower == 'debian' and with_neovim == true
+
+- name: Install nodejs support for neovim
+  npm:
+    name: neovim
+    state: latest
+    global: yes
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ NODE_VERSION }}/bin:{{ ansible_env.PATH }}"
+
+  when: with_neovim and 'nodejs' in with_neovim_support_for
+
+- name: Install python support for neovim
+  pip:
+    name: 
+    - neovim
+    state: latest
+
+  when: with_neovim and 'python' in with_neovim_support_for
+
+- name: Install ruby support for neovim
+  gem:
+    name: neovim
+    state: latest
+
+  when: with_neovim and 'ruby' in with_neovim_support_for

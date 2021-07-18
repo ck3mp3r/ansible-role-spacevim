@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+    - {role: spacevim, with_neovim: true, with_neovim_support_for: ['nodejs']}
