@@ -1,0 +1,13 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Update apt cache (on Debian).
+      apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+
+    - name: Install git
+      package:
+        name:
+          - git

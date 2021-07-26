@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: print out os family
+      debug: msg={{ ansible_os_family }}
+    - name: Include ansible-role-spacevim
+      include_role:
+        name: ansible-role-spacevim
+      vars: 
+        with_neovim: true

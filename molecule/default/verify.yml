@@ -1,0 +1,15 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Stat ~/.SpaceVim
+    stat:
+      path: ~/.SpaceVim
+    register: spacevim_exists
+
+  - name: ~/.SpaceVim exists
+    assert:
+      that: spacevim_exists.stat.exists
