@@ -20,4 +20,4 @@
         - "-c"
         - "{{ spaceviminstall.content }}"
 
-  when: spacevim_installed.stat.exists == False
+  when: not spacevim_installed.stat.exists

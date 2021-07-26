@@ -16,7 +16,7 @@
       name: font-hack-nerd-font
       state: upgraded
 
-  when: ansible_os_family | lower == 'darwin' and with_neovim == true
+  when: ansible_os_family | lower == 'darwin' and with_neovim
 
 - name: Install neovim - (Debian)
   become: yes
@@ -25,7 +25,7 @@
       - neovim
     state: latest
 
-  when: ansible_os_family | lower == 'debian' and with_neovim == true
+  when: ansible_os_family | lower == 'debian' and with_neovim
 
 - name: Install nodejs support for neovim
   npm:
@@ -39,7 +39,7 @@
 
 - name: Install python support for neovim
   pip:
-    name: 
+    name:
     - neovim
     state: latest
 

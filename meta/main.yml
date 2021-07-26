@@ -5,4 +5,12 @@ galaxy_info:
   role_name: spacevim
   min_ansible_version: 2.1
   galaxy_tags: []
+  platforms:
+    - name: MacOSX
+      versions:
+        - any
+        - all
+    - name: Debian
+      versions:
+        - all
 dependencies: []
